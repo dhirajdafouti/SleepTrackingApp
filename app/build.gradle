@@ -71,7 +71,7 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle"
 
-    // Kotlin Extensions and Coroutines support for Room
+    // Kotlin Extensions and Coroutines support for Room(Suspend builder function)
     implementation "androidx.room:room-ktx:$version_room"
 
 

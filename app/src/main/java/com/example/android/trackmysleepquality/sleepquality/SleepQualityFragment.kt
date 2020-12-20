@@ -24,6 +24,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.databinding.FragmentSleepQualityBinding
+import com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModelFactory
 
 /**
  * Fragment that displays a list of clickable icons,
@@ -32,6 +33,12 @@ import com.example.android.trackmysleepquality.databinding.FragmentSleepQualityB
  * and the database is updated.
  */
 class SleepQualityFragment : Fragment() {
+
+    private lateinit var binding: FragmentSleepQualityBinding;
+
+    private lateinit var viewModel: SleepQualityViewModel
+
+    private lateinit var viewModelFactory: SleepTrackerViewModelFactory
 
     /**
      * Called when the Fragment is ready to display content to the screen.
@@ -42,11 +49,10 @@ class SleepQualityFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
-        val binding: FragmentSleepQualityBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_sleep_quality, container, false)
 
-        val application = requireNotNull(this.activity).application
-
+        binding.lifecycleOwner=this
         return binding.root
     }
 }
