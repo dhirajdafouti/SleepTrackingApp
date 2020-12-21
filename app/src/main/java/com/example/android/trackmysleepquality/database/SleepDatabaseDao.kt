@@ -25,24 +25,25 @@ import androidx.room.Update
 @Dao
 interface SleepDatabaseDao {
     @Insert
-    suspend fun insert(night: SleepNight)
+     fun insert(night: SleepNight)
 
     @Update
-    suspend fun update(night: SleepNight)
+     fun update(night: SleepNight)
 
     @Query("SELECT *FROM daily_sleep_quality_table WHERE nightId=:key")
-    suspend fun get(key: Long): SleepNight?
+     fun get(key: Long): SleepNight?
 
     @Query("DELETE FROM daily_sleep_quality_table")
-    suspend fun clear()
+     fun clear()
+
     /*
     The SQLite query should return all columns from the daily_sleep_quality_table, ordered in descending order.
       Let getAllNights() return a list of SleepNight as LiveData.
      Room keeps this LiveData updated for us, and we don't have to specify an observer for it.
      */
     @Query("SELECT *FROM daily_sleep_quality_table ORDER BY nightId DESC")
-    suspend fun getAllNightByDesc(): LiveData<SleepNight>
+     fun getAllNight(): LiveData<List<SleepNight>>
 
     @Query("SELECT *FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
-    suspend fun getToNight(): SleepNight?
+     fun getToNight(): SleepNight?
 }
